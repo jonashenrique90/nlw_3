@@ -1,26 +1,26 @@
-import React from 'react'
-import '../styles/pages/landing.css';
-import logoImg from '../assets/logo.svg';
+import React from 'react';
+import { PageLanding, ContentWrapper, Location, EnterApp } from './styles';
+import logoImg from '../../assets/logo.svg';
 import { FiArrowRight } from 'react-icons/fi';
-import { Link } from 'react-router-dom'
+
 
 export default function Landing() {
     return (
-        <div id="page-landing">
-        <div className="content-wrapper">
+        <PageLanding>
+        <ContentWrapper>
           <img src={logoImg} alt="Happy"/>
           <main>
             <h1>Leve felicidade para o mundo</h1>
             <p>Visite orfanatos e mude o dia de muitas crianças.</p>
           </main>
-          <div className="location">
+          <Location>
             <strong>Juazeiro</strong>
             <span>Bahia</span>
-          </div>
-          <Link to="/app" className="enter-app">
+          </Location>
+          <EnterApp to="/app">
             <FiArrowRight size={26} color="rgba(0,0,0,0.6)" />
-          </Link>
-        </div>
-      </div>
+          </EnterApp>
+        </ContentWrapper>
+      </PageLanding>
     )
 }

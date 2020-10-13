@@ -1,15 +1,16 @@
-import React from 'react'
-import mapMArkerImg from '../assets/map-marker.svg';
-import { Link } from 'react-router-dom';
+import React, { useContext} from 'react';
+import mapMArkerImg from '../../assets/map-marker.svg';
+import { ThemeContext } from 'styled-components';
 import { FiPlusCircle } from 'react-icons/fi';
 import { Map, TileLayer } from 'react-leaflet';
-import '../styles/pages/orphanages.css';
+import { PageMap, CreateOrphanage } from './styles';
 import 'leaflet/dist/leaflet.css';
 
 export default function OrphanagesMap() {
+	const { title } = useContext(ThemeContext)
     return (
         <div>
-            <div id="page-map">
+            <PageMap>
 				<aside>
 					<header>
 						<img src={mapMArkerImg} alt="mapMarker"/>
@@ -22,14 +23,14 @@ export default function OrphanagesMap() {
 					</footer>
 				</aside>
 				<Map center={[-9.8894664, -39.9655284]} zoom={15} minZoom={3} style={{ width: '100%', height: '100%'}}>
-					<TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"></TileLayer>
+					{/* <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"></TileLayer> */}
 					{/* <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png"></TileLayer> */}
-					{/* <TileLayer url={`https://api.mapbox.com/styles/v1/mapbox/ligth-v10/tiles/256/{z}/{x}/{y}@2x?acess_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}></TileLayer> */}
+					<TileLayer url={`https://api.mapbox.com/styles/v1/mapbox/${title}-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}></TileLayer>
 				</Map>
-				<Link to="" className="create-orphanage">
+				<CreateOrphanage to="/">
 					<FiPlusCircle size={32} color="#fff"></FiPlusCircle>
-				</Link>
-			</div>
+				</CreateOrphanage>
+			</PageMap>
         </div>
     )
 }
