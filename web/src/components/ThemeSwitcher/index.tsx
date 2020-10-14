@@ -9,7 +9,7 @@ interface Props {
 }
 
 const ThemeSwitcher: React.FC<Props> = ({ toggleTheme }: any) => {
-  const { colors, title } = useContext(ThemeContext)
+  const { colors, title } = useContext(ThemeContext)  
 
   return (
     <Container>
